@@ -1,14 +1,21 @@
 "use client";
 
-import { Bot, Send, X } from "lucide-react";
+import { Bot, Send, ShieldCheck, Sparkles, X } from "lucide-react";
 import { FormEvent, useState } from "react";
 
 type Message = { role: "assistant" | "user"; content: string };
 
 const starter: Message = {
   role: "assistant",
-  content: "Ask me about Pradyumna’s projects, experience, or approach to reliable AI systems.",
+  content: "Hi, I’m P’AI. Ask me about Pradyumna’s published projects, experience, skills, or approach to AI systems.",
 };
+
+const quickQuestions = [
+  "Explain SeatPeekr",
+  "Tell me about Pradyumna",
+  "What projects are featured?",
+  "How does he approach AI systems?",
+];
 
 export function PortfolioAssistant() {
   const [open, setOpen] = useState(false);
@@ -16,9 +23,8 @@ export function PortfolioAssistant() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
 
-  async function submit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const question = input.trim();
+  async function askQuestion(rawQuestion: string) {
+    const question = rawQuestion.trim();
     if (!question || loading) return;
     setInput("");
     setMessages((current) => [...current, { role: "user", content: question }]);
@@ -38,21 +44,39 @@ export function PortfolioAssistant() {
     }
   }
 
+  async function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    await askQuestion(input);
+  }
+
+  function askQuickQuestion(question: string) {
+    if (loading) return;
+    void askQuestion(question);
+  }
+
   return (
     <div className="portfolio-assistant">
       {open ? (
-        <section className="assistant-panel" aria-label="Portfolio assistant">
+        <section className="assistant-panel" aria-label="P’AI portfolio guide">
           <header>
-            <div><Bot size={17} aria-hidden="true" /><span>Portfolio assistant</span></div>
+            <div className="assistant-title"><span className="assistant-icon"><Bot size={16} aria-hidden="true" /></span><span><strong>P’AI</strong><small>Portfolio guide</small></span></div>
             <button type="button" onClick={() => setOpen(false)} aria-label="Close assistant"><X size={17} /></button>
           </header>
-          <p className="assistant-note">Answers are grounded only in this published portfolio.</p>
+          <div className="assistant-note"><ShieldCheck size={14} aria-hidden="true" /><span>Published portfolio only. No private information.</span></div>
           <div className="assistant-messages" aria-live="polite">
             {messages.map((message, index) => <p key={`${message.role}-${index}`} className={`assistant-message assistant-message-${message.role}`}>{message.content}</p>)}
             {loading ? <p className="assistant-message assistant-message-assistant">Thinking…</p> : null}
           </div>
+          {messages.length === 1 ? (
+            <div className="assistant-prompts">
+              <div className="assistant-prompts-label"><Sparkles size={13} aria-hidden="true" /> Try a question</div>
+              <div className="assistant-prompt-grid">
+                {quickQuestions.map((question) => <button key={question} type="button" onClick={() => askQuickQuestion(question)}>{question}</button>)}
+              </div>
+            </div>
+          ) : null}
           <form onSubmit={submit}>
-            <input value={input} onChange={(event) => setInput(event.target.value)} placeholder="Ask about the finance tracker" maxLength={600} aria-label="Ask about this portfolio" />
+            <input value={input} onChange={(event) => setInput(event.target.value)} placeholder="Ask about the published portfolio" maxLength={600} aria-label="Ask P’AI about this portfolio" />
             <button type="submit" disabled={loading || !input.trim()} aria-label="Send question"><Send size={16} /></button>
           </form>
         </section>
@@ -61,10 +85,10 @@ export function PortfolioAssistant() {
   className="assistant-trigger"
   type="button"
   onClick={() => setOpen(true)}
-  aria-label="Open P'AI Assistant"
+  aria-label="Open P’AI portfolio guide"
 >
   <Bot size={18} />
-  Ask P&apos;AI
+
 </button>
     </div>
   );

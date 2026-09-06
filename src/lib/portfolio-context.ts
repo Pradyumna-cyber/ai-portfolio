@@ -25,14 +25,26 @@ export function getLocalPortfolioAnswer(question: string) {
   const normalized = question.toLowerCase().replace(/[^a-z0-9\s]/g, " ");
   const has = (...terms: string[]) => terms.some((term) => normalized.includes(term));
 
+  if (has("email", "e mail", "phone", "mobile", "address", "home", "password", "secret", "api key", "token", "private", "personal contact", "contact", "salary", "income", "credential") || /[^\s@]+@[^\s@]+\.[^\s@]+|\+?\d[\d\s().-]{7,}\d/.test(question)) {
+    return "I can only answer questions about the public information published on this portfolio. I can’t share private or personal details.";
+  }
+
   if (has("experience", "past work", "pastw", "career", "company", "companies", "worked")) {
     return `${portfolio.person.name}'s published experience includes: ${portfolio.experience
       .map((item) => `${item.role} at ${item.company} (${item.period}) — ${item.detail}`)
       .join(" ")}`;
   }
 
+  const matchingProject = portfolio.projects.find((project) =>
+    normalized.includes(project.name.toLowerCase()),
+  );
+
+  if (matchingProject) {
+    return `${matchingProject.name}: ${matchingProject.summary} It uses ${matchingProject.technologies.join(", ")}.${matchingProject.links.map((link) => ` ${link.label}: ${link.href}`).join("")}`;
+  }
+
   if (has("project", "projects", "work", "finance tracker", "finance")) {
-    return `The featured project is ${portfolio.projects
+    return `Featured projects include ${portfolio.projects
       .map(
         (project) => `${project.name}: ${project.summary} It uses ${project.technologies.join(", ")}.`,
       )
@@ -47,5 +59,5 @@ export function getLocalPortfolioAnswer(question: string) {
     return `${portfolio.person.name} is a ${portfolio.person.role}, based in ${portfolio.person.location}. ${portfolio.now.body}`;
   }
 
-  return "I can help with Pradyumna's experience, the AI Finance Tracker project, skills, or approach to reliable AI systems. Try: ‘What is his past experience?’";
+  return "I can help with Pradyumna's experience, SeatPeekr and AI Finance Tracker projects, skills, or approach to reliable AI systems. Try: ‘What is SeatPeekr?’";
 }

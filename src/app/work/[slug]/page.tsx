@@ -29,6 +29,21 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       </p>
       <h1 className="page-title mt-4">{project.name}</h1>
       <p className="page-intro">{project.summary}</p>
+      {project.links.length > 0 && (
+        <div className="mt-8 flex flex-wrap gap-3">
+          {project.links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="button-primary"
+            >
+              {link.label} <ArrowUpRight size={16} aria-hidden="true" />
+            </a>
+          ))}
+        </div>
+      )}
       <div className="case-study-grid">
         <section>
           <p className="eyebrow">01 · Problem</p>

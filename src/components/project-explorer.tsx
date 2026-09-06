@@ -69,9 +69,22 @@ export function ProjectExplorer({ projects }: { projects: Project[] }) {
             </span>
           ))}
         </div>
-        <Link href={`/work/${selected.slug}`} className="button-secondary mt-9">
-          Inspect case study <ArrowUpRight size={16} aria-hidden="true" />
-        </Link>
+        <div className="mt-9 flex flex-wrap gap-3">
+          <Link href={`/work/${selected.slug}`} className="button-secondary">
+            Inspect case study <ArrowUpRight size={16} aria-hidden="true" />
+          </Link>
+          {selected.links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="button-primary"
+            >
+              {link.label} <ArrowUpRight size={16} aria-hidden="true" />
+            </a>
+          ))}
+        </div>
       </article>
     </section>
   );

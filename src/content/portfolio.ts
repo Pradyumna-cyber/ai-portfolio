@@ -3,7 +3,7 @@ export type Project = {
   name: string;
   eyebrow: string;
   summary: string;
-  status: "Flagship" | "Applied ML" | "Mobile system";
+  status: "Flagship" | "Applied ML" | "Mobile system" | "Browser extension";
   year: string;
   technologies: string[];
   problem: string;
@@ -91,6 +91,27 @@ export const portfolio = {
   ],
   projects: [
     {
+      slug: "seatpeekr",
+      name: "SeatPeekr",
+      eyebrow: "Peek before you pick",
+      summary:
+        "A browser extension that turns cinema seat selection into an estimated 3D view, helping moviegoers compare screen distance and viewing angles before booking.",
+      status: "Browser extension",
+      year: "2026",
+      technologies: ["React", "TypeScript", "Three.js", "Vite", "Chrome Manifest V3"],
+      problem:
+        "A top-down cinema seat map shows where a seat is, but makes it difficult to judge how the screen will look from that position.",
+      approach:
+        "Detect seating layouts on supported BookMyShow and District booking pages, then render an estimated cinema view with Three.js inside a React extension panel so users can compare seats before booking.",
+      decisions: [
+        "Bring the preview into the existing seat-selection workflow through a browser extension.",
+        "Use seating-layout information to estimate screen perspective, distance, and viewing angle.",
+        "Label previews as estimates because screen dimensions, row elevation, and auditorium geometry can vary between theatres.",
+      ],
+      next: "Improve preview accuracy across more auditorium layouts and validate estimates against real cinema seating positions.",
+      links: [{ label: "Visit SeatPeekr", href: "https://seatpeekr.vercel.app/" }],
+    },
+    {
       slug: "ai-finance-tracker",
       name: "AI Finance Tracker",
       eyebrow: "Personal finance assistant",
@@ -109,7 +130,7 @@ export const portfolio = {
         "Design recommendations around current spend context rather than generic financial advice.",
       ],
       next: "Add evaluation cases for categorization quality, explicit recommendation citations, and user-controlled privacy settings.",
-      links: [],
+      links: [{ label: "Visit AI Finance Tracker", href: "https://airafinancetracker.netlify.app/" }],
     },
   ] satisfies Project[],
 };
