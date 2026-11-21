@@ -5,6 +5,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     "",
     "/standard",
+    "/scroll",
+    "/vr",
     "/work",
     "/experience",
     "/thinking",

@@ -39,7 +39,7 @@ async function lowQuality(p: Page) {
 }
 
 async function start(p: Page) {
-  await p.goto("/");
+  await p.goto("/campus");
   await p.getByRole("button", { name: "Start exploring" }).click();
   await p.getByRole("button", { name: "Let’s explore" }).click();
   await phase(p, "outdoor");
@@ -72,7 +72,7 @@ test("complete journey, grounded chat, all rooms, persistence, routes and standa
 }) => {
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
-  await page.goto("/");
+  await page.goto("/campus");
   await page.getByRole("button", { name: "Start exploring" }).waitFor();
   await page.getByRole("button", { name: /The Companion/ }).click();
   await expect(page.getByRole("button", { name: /The Companion/ })).toHaveCSS(

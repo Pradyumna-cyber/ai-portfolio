@@ -16,12 +16,12 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js";
 import { portfolio } from "@/content/portfolio";
-import { OS_FOLDERS } from "./os-content";
+import { OS_FOLDERS } from "@/components/pa-os/content";
+import { screenIdleTexture } from "@/components/pa-os/idle-texture";
 import {
   floorTexture,
   glowTexture,
   plasterTexture,
-  screenIdleTexture,
   skyTexture,
   spineTexture,
   woodTexture,

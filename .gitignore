@@ -8,3 +8,7 @@ node_modules
 *.tsbuildinfo
 test-results/
 playwright-report/
+
+# local tooling and build artefacts
+.claude/
+*-vercel-final.zip

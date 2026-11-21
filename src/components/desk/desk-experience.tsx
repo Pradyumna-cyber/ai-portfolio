@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { portfolio } from "@/content/portfolio";
-import { DeskOS } from "./desk-os";
+import { PaOS } from "@/components/pa-os/pa-os";
 import { DeskScene, type DeskMode, type OverlayRefs } from "./desk-scene";
 import "./desk.css";
 
@@ -133,7 +133,7 @@ export default function DeskExperience() {
             overlay.current.screen = el;
           }}
         >
-          <DeskOS onExit={exit} reducedMotion={reducedMotion} />
+          <PaOS onExit={exit} reducedMotion={reducedMotion} />
         </div>
       )}
     </div>

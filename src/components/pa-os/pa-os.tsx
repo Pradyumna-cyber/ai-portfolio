@@ -2,12 +2,21 @@
 import Link from "next/link";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { portfolio } from "@/content/portfolio";
-import { OS_FOLDERS, STARTER_PROMPTS, type FolderId } from "./os-content";
+import { OS_FOLDERS, STARTER_PROMPTS, type FolderId } from "./content";
+import "./pa-os.css";
 
 type Msg = { role: "user" | "assistant"; content: string; mode?: "live" | "lookup" };
 
-/** The "operating system" shown on the monitor once the camera has zoomed in. */
-export function DeskOS({ onExit, reducedMotion }: { onExit: () => void; reducedMotion: boolean }) {
+/** PA/OS: the portfolio "operating system" shown on a 3D monitor (used by /desk and the cinematic intro). */
+export function PaOS({
+  onExit,
+  reducedMotion,
+  exitLabel = "Back to desk",
+}: {
+  onExit: () => void;
+  reducedMotion: boolean;
+  exitLabel?: string;
+}) {
   const [open, setOpen] = useState<FolderId | null>(null);
   const folder = OS_FOLDERS.find((f) => f.id === open);
 
@@ -31,7 +40,7 @@ export function DeskOS({ onExit, reducedMotion }: { onExit: () => void; reducedM
         <span className="os-mono os-dim">[ v2026.11 ]</span>
         <Clock />
         <button type="button" className="os-exit" onClick={onExit}>
-          ⎋ Back to desk
+          ⎋ {exitLabel}
         </button>
       </header>
 

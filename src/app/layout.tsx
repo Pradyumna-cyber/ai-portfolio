@@ -12,7 +12,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${portfolio.person.name} — Applied AI Systems`,
+    default: `${portfolio.person.name} - Portfolio`,
     template: `%s — ${portfolio.person.name}`,
   },
   description:
@@ -20,13 +20,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    title: `${portfolio.person.name} — Applied AI Systems`,
+    title: `${portfolio.person.name} - Portfolio`,
     description: portfolio.thesis,
     url: siteUrl,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${portfolio.person.name} — Applied AI Systems`,
+    title: `${portfolio.person.name} - Portfolio`,
     description: portfolio.thesis,
   },
   robots: { index: true, follow: true },

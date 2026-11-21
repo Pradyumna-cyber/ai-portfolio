@@ -13,6 +13,15 @@ export type Project = {
   links: { label: string; href: string }[];
 };
 
+/** Not published yet: add real entries here and every page that shows them updates. */
+export type Education = {
+  institution: string;
+  qualification: string;
+  period: string;
+  detail?: string;
+};
+export type Achievement = { title: string; issuer?: string; year?: string; detail?: string };
+
 export const portfolio = {
   person: {
     name: "Pradyumna Aher",
@@ -151,6 +160,8 @@ export const portfolio = {
       ],
     },
   ] satisfies Project[],
+  education: [] as Education[],
+  achievements: [] as Achievement[],
 };
 
 export function getProject(slug: string) {

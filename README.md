@@ -1,6 +1,6 @@
 # Pradyumna Aher · playable portfolio
 
-The Next.js homepage is a compact React Three Fiber campus. The original portfolio is available at `/standard`; `/work`, both project case studies, `/experience`, `/thinking`, the sitemap, and the P’AI API remain available.
+The homepage is a scroll-driven 3D film (design 2): a man in a VR headset, a dive through the visor, and a photoreal Earth with one chapter per section (About, Projects, How I build with AI, Experience, Beliefs, Toolkit, Contact). `src/designs.ts` picks the homepage design. The walkable React Three Fiber campus is at `/campus`. The original portfolio is available at `/standard`; `/work`, both project case studies, `/experience`, `/thinking`, the sitemap, and the P’AI API remain available.
 
 ## Run
 
