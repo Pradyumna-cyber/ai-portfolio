@@ -1125,3 +1125,56 @@ html.d2-page {
     bottom: auto;
   }
 }
+
+/* Credits: a tiny, faint toggle; click to reveal the required attributions. */
+.d2-root .d2-credits {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  translate: -50% 0;
+  margin: 0 !important;
+  padding: 0;
+  background: none;
+  font-family: var(--d2-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: rgb(255 255 255 / 0.28) !important;
+  text-align: center;
+  white-space: nowrap;
+}
+.d2-credits summary {
+  cursor: pointer;
+  list-style: none;
+}
+.d2-credits summary::-webkit-details-marker {
+  display: none;
+}
+.d2-credits summary:hover,
+.d2-credits[open] summary {
+  color: rgb(255 255 255 / 0.6);
+}
+.d2-credits p {
+  margin: 4px 0 0 !important;
+  font-size: 9px;
+  color: rgb(255 255 255 / 0.5) !important;
+}
+.d2-contact {
+  position: relative;
+}
+@media (max-width: 760px) {
+  .d2-credits,
+  .d2-credits p {
+    white-space: normal;
+  }
+  .d2-root .d2-credits {
+    width: calc(100% - 40px);
+  }
+}
+@media (max-width: 760px) {
+  .d2-root .d2-credits {
+    position: static;
+    translate: none;
+    width: auto;
+    margin-top: 20px !important;
+  }
+}

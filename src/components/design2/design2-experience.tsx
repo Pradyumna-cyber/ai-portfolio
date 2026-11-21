@@ -356,10 +356,13 @@ export function Design2Experience() {
                 GitHub ↗
               </a>
             </p>
-            <p className="d2-credits">
-              Head scan: Lee Perry-Smith / Infinite Realities (CC BY 3.0) · Earth textures: Solar
-              System Scope (CC BY 4.0) · Type: Silkscreen (OFL)
-            </p>
+            <details className="d2-credits">
+              <summary>Credits</summary>
+              <p>
+                Head scan: Lee Perry-Smith / Infinite Realities (CC BY 3.0) · Earth textures: Solar
+                System Scope (CC BY 4.0)
+              </p>
+            </details>
           </div>
         </section>
       </main>
