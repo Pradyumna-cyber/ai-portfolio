@@ -1,27 +1,15 @@
 import { BrainCircuit, GitBranch, SearchCheck } from "lucide-react";
+import { portfolio } from "@/content/portfolio";
 
 export const metadata = {
   title: "Systems Thinking",
   description: "The principles behind Pradyumna Aher's applied AI work.",
 };
 
-const areas = [
-  {
-    icon: BrainCircuit,
-    title: "LLM application design",
-    body: "Focus on user workflows, evaluation requirements, and the boundary between deterministic software and probabilistic capability.",
-  },
-  {
-    icon: SearchCheck,
-    title: "Retrieval and trust",
-    body: "RAG is useful only when source quality, retrieval relevance, and answer grounding are treated as product requirements.",
-  },
-  {
-    icon: GitBranch,
-    title: "Agentic orchestration",
-    body: "Agent workflows need explicit state, tool boundaries, and failure paths—not just a chain of prompts.",
-  },
-];
+const areas = portfolio.thinking.map((area, index) => ({
+  ...area,
+  icon: [BrainCircuit, SearchCheck, GitBranch][index],
+}));
 
 export default function ThinkingPage() {
   return (
@@ -37,7 +25,7 @@ export default function ThinkingPage() {
             <area.icon size={22} className="text-accent" aria-hidden="true" />
             <h2>{area.title}</h2>
             <p>{area.body}</p>
-            <span className="font-mono text-xs text-muted">Research notes incoming</span>
+            <span className="font-mono text-xs text-muted">{portfolio.thinkingStatus}</span>
           </article>
         ))}
       </div>

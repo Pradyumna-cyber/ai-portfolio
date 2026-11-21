@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 
 import { PageTransition } from "@/components/page-transition";
 import { Providers } from "@/components/providers";
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
-import { PortfolioAssistant } from "@/components/portfolio-assistant";
+import { SiteChrome } from "@/components/site-chrome";
 import { portfolio } from "@/content/portfolio";
 
 import "./globals.css";
@@ -43,10 +41,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <a href="#main" className="skip-link">
               Skip to content
             </a>
-            <SiteHeader />
-            <PageTransition>{children}</PageTransition>
-            <SiteFooter />
-            <PortfolioAssistant />
+            <SiteChrome>
+              <PageTransition>{children}</PageTransition>
+            </SiteChrome>
           </div>
         </Providers>
       </body>

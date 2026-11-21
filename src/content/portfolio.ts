@@ -16,6 +16,7 @@ export type Project = {
 export const portfolio = {
   person: {
     name: "Pradyumna Aher",
+    identity: "Applied AI Builder",
     role: "Software Engineer transitioning into Applied AI Engineering",
     email: "pradyumnaaher05@gmail.com",
     location: "Thane, India",
@@ -36,6 +37,21 @@ export const portfolio = {
     "MCP",
     "Vector Search & Databases",
   ],
+  thinking: [
+    {
+      title: "LLM application design",
+      body: "Focus on user workflows, evaluation requirements, and the boundary between deterministic software and probabilistic capability.",
+    },
+    {
+      title: "Retrieval and trust",
+      body: "RAG is useful only when source quality, retrieval relevance, and answer grounding are treated as product requirements.",
+    },
+    {
+      title: "Agentic orchestration",
+      body: "Agent workflows need explicit state, tool boundaries, and failure paths—not just a chain of prompts.",
+    },
+  ],
+  thinkingStatus: "Research notes incoming",
   now: {
     label: "Current direction",
     title: "Applied AI systems with product-grade foundations.",
@@ -130,7 +146,9 @@ export const portfolio = {
         "Design recommendations around current spend context rather than generic financial advice.",
       ],
       next: "Add evaluation cases for categorization quality, explicit recommendation citations, and user-controlled privacy settings.",
-      links: [{ label: "Visit AI Finance Tracker", href: "https://airafinancetracker.netlify.app/" }],
+      links: [
+        { label: "Visit AI Finance Tracker", href: "https://airafinancetracker.netlify.app/" },
+      ],
     },
   ] satisfies Project[],
 };
